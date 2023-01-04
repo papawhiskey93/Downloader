@@ -1,19 +1,30 @@
 let config = require('config')
 const https = require('https')
 const fs = require('fs')
-
+const CryptoJS = require('crypto-js');
 
 var downloader = {
 
+    aesEncrypt(rawPassword) {
+        // key received in the email
+        const key = `${config.NSELoginData.key}`
+        const cipher = CryptoJS.AES.encrypt(rawPassword, CryptoJS.enc.Base64.parse(key), {
+            mode: CryptoJS.mode.ECB
+        })
+    
+        return cipher.toString();
+    },
     async InitializeLogin(failedLoginRequestCount) {
         return new Promise((resolve, reject) => {
-            let url = config.NSELoginData.loginURL
-
+            let url = config.NSELoginData.loginURL 
+            // Provide the raw password here 
+            // console.log(`Encryoted Password ${aesEncrypt('Abcd@12345678')}`)
             let loginData = {
                 "memberCode": config.NSELoginData.memberCode,
                 "loginId": config.NSELoginData.loginId,
-                "password": config.NSELoginData.password
+                "password": `${downloader.aesEncrypt(`${config.NSELoginData.password}`)}`
             };
+            
             const dataString = JSON.stringify(loginData)
 
             const loginOptions = {

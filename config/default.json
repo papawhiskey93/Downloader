@@ -9,7 +9,8 @@
         "loginURL": "https://www.devconnect2nse.com/extranet-api/login/1.0",
         "memberCode": "NEV05",
         "loginId": "apiUser",
-        "password": "jcv7i2LEbHEuzseVGlr3xA=="
+        "password": "Abcd@12345678",
+        "key": "s8G110uaLvE6hPd7fZRLDfxwWjY2kZOZ9t7oEYt9Y30="
     },
     "maxLoginRetryCount": 5,
     "maxDownloadRetryCount": 5,
