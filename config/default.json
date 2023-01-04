@@ -1,0 +1,17 @@
+{
+    "server": {
+        "port" : 9092
+    },
+    "NSELoginResponse" : {
+        "token" : ""
+    },
+    "NSELoginData": {
+        "loginURL": "https://www.devconnect2nse.com/extranet-api/login/1.0",
+        "memberCode": "NEV05",
+        "loginId": "apiUser",
+        "password": "jcv7i2LEbHEuzseVGlr3xA=="
+    },
+    "maxLoginRetryCount": 5,
+    "maxDownloadRetryCount": 5,
+    "requestTimeoutInMS": 1000
+}

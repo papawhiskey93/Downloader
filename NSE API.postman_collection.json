@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "55da5472-71a1-4a36-af9c-6c285c7000e4",
+		"name": "NSE API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"memberCode\" : \"NEV05\",\n    \"loginId\" : \"apiUser\",\n    \"password\" : \"jcv7i2LEbHEuzseVGlr3xA==\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.devconnect2nse.com/extranet-api/login/1.0",
+					"protocol": "https",
+					"host": [
+						"www",
+						"devconnect2nse",
+						"com"
+					],
+					"path": [
+						"extranet-api",
+						"login",
+						"1.0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List file",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true,
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJtZW1iZXJDZCI6Ik5FVjA1Iiwic3ViIjoiTkVWMDUiLCJsb2dpbklkIjoiYXBpVXNlciIsImlzcyI6ImFwaVVzZXIiLCJleHAiOjE2NzI4MTg1NjMsImlhdCI6MTY3MjgxNDk2MywianRpIjoiMGI1ZWQ1MDMtMzUxNi00NWI2LTgyMDEtYjA5NDhmOWExNjhiIn0.FJxVyn2Gv8His0Vb3ShmZLNak5la0AN00Mkby_X1g09n6hS2gMsduz3V5o90GLTdLjis1DWk3a1yNcpEFFi6Gw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.devconnect2nse.com/extranet-api/common/content/1.0?segment=FO&folderPath=/bhavcopy",
+					"protocol": "https",
+					"host": [
+						"www",
+						"devconnect2nse",
+						"com"
+					],
+					"path": [
+						"extranet-api",
+						"common",
+						"content",
+						"1.0"
+					],
+					"query": [
+						{
+							"key": "segment",
+							"value": "FO"
+						},
+						{
+							"key": "folderPath",
+							"value": "/bhavcopy"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download file",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJtZW1iZXJDZCI6Ik5FVjA1Iiwic3ViIjoiTkVWMDUiLCJsb2dpbklkIjoiYXBpVXNlciIsImlzcyI6ImFwaVVzZXIiLCJleHAiOjE2NzI4MTg1NjMsImlhdCI6MTY3MjgxNDk2MywianRpIjoiMGI1ZWQ1MDMtMzUxNi00NWI2LTgyMDEtYjA5NDhmOWExNjhiIn0.FJxVyn2Gv8His0Vb3ShmZLNak5la0AN00Mkby_X1g09n6hS2gMsduz3V5o90GLTdLjis1DWk3a1yNcpEFFi6Gw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.devconnect2nse.com/extranet-api/common/file/download/1.0?segment=FO&folderPath=/bhavcopy&filename=fo18MAY2020bhav.csv.gz",
+					"protocol": "https",
+					"host": [
+						"www",
+						"devconnect2nse",
+						"com"
+					],
+					"path": [
+						"extranet-api",
+						"common",
+						"file",
+						"download",
+						"1.0"
+					],
+					"query": [
+						{
+							"key": "segment",
+							"value": "FO"
+						},
+						{
+							"key": "folderPath",
+							"value": "/bhavcopy"
+						},
+						{
+							"key": "filename",
+							"value": "fo18MAY2020bhav.csv.gz"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "app download",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"filename\" : \"fo18MAY2020bhav.csv.gz\",\n    \"uri\" : \"https://www.devconnect2nse.com/extranet-api/common/file/download/1.0?segment=FO&folderPath=/bhavcopy&filename=fo18MAY2020bhav.csv.gz\" ,\n    \"localPath\": \"./download/\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9092/Download",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9092",
+					"path": [
+						"Download"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "app download status",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"uuid\" : \"f869df55-31ef-4ca5-a580-add7fc7b21bb\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9092/DownloadStatus",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9092",
+					"path": [
+						"DownloadStatus"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
