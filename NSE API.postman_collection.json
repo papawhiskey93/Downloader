@@ -51,7 +51,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiJ9.eyJtZW1iZXJDZCI6Ik5FVjA1Iiwic3ViIjoiTkVWMDUiLCJsb2dpbklkIjoiYXBpVXNlciIsImlzcyI6ImFwaVVzZXIiLCJleHAiOjE2NzI4MTg1NjMsImlhdCI6MTY3MjgxNDk2MywianRpIjoiMGI1ZWQ1MDMtMzUxNi00NWI2LTgyMDEtYjA5NDhmOWExNjhiIn0.FJxVyn2Gv8His0Vb3ShmZLNak5la0AN00Mkby_X1g09n6hS2gMsduz3V5o90GLTdLjis1DWk3a1yNcpEFFi6Gw",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJtZW1iZXJDZCI6Ik5FVjA1Iiwic3ViIjoiTkVWMDUiLCJsb2dpbklkIjoiYXBpVXNlciIsImlzcyI6ImFwaVVzZXIiLCJleHAiOjE2NzI4MjI0NzgsImlhdCI6MTY3MjgxODg3OCwianRpIjoiMmM2MWYyMzEtNjk1Ni00MmI0LTk2ZGYtNWRhNWI2MWNmN2QzIn0.fLpHvCiNVcOGw0CESW09TXB0TDHGw_qGDGlfXKHFMZcr9Lw_Ab00IsjYWoA8bbs8rgWptqmYaIrSvYEVUNrHIA",
 							"type": "string"
 						}
 					]
@@ -68,7 +68,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://www.devconnect2nse.com/extranet-api/common/content/1.0?segment=FO&folderPath=/bhavcopy",
+					"raw": "https://www.devconnect2nse.com/extranet-api/common/content/1.0?segment=FO&folderPath=/",
 					"protocol": "https",
 					"host": [
 						"www",
@@ -88,7 +88,7 @@
 						},
 						{
 							"key": "folderPath",
-							"value": "/bhavcopy"
+							"value": "/"
 						}
 					]
 				}
@@ -103,7 +103,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJSUzI1NiJ9.eyJtZW1iZXJDZCI6Ik5FVjA1Iiwic3ViIjoiTkVWMDUiLCJsb2dpbklkIjoiYXBpVXNlciIsImlzcyI6ImFwaVVzZXIiLCJleHAiOjE2NzI4MTg1NjMsImlhdCI6MTY3MjgxNDk2MywianRpIjoiMGI1ZWQ1MDMtMzUxNi00NWI2LTgyMDEtYjA5NDhmOWExNjhiIn0.FJxVyn2Gv8His0Vb3ShmZLNak5la0AN00Mkby_X1g09n6hS2gMsduz3V5o90GLTdLjis1DWk3a1yNcpEFFi6Gw",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJtZW1iZXJDZCI6Ik5FVjA1Iiwic3ViIjoiTkVWMDUiLCJsb2dpbklkIjoiYXBpVXNlciIsImlzcyI6ImFwaVVzZXIiLCJleHAiOjE2NzI4MjI0NzgsImlhdCI6MTY3MjgxODg3OCwianRpIjoiMmM2MWYyMzEtNjk1Ni00MmI0LTk2ZGYtNWRhNWI2MWNmN2QzIn0.fLpHvCiNVcOGw0CESW09TXB0TDHGw_qGDGlfXKHFMZcr9Lw_Ab00IsjYWoA8bbs8rgWptqmYaIrSvYEVUNrHIA",
 							"type": "string"
 						}
 					]
@@ -111,7 +111,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://www.devconnect2nse.com/extranet-api/common/file/download/1.0?segment=FO&folderPath=/bhavcopy&filename=fo18MAY2020bhav.csv.gz",
+					"raw": "https://www.devconnect2nse.com/extranet-api/common/file/download/1.0?segment=FO&folderPath=/&filename=cm_index_token_mstr.txt",
 					"protocol": "https",
 					"host": [
 						"www",
@@ -132,11 +132,11 @@
 						},
 						{
 							"key": "folderPath",
-							"value": "/bhavcopy"
+							"value": "/"
 						},
 						{
 							"key": "filename",
-							"value": "fo18MAY2020bhav.csv.gz"
+							"value": "cm_index_token_mstr.txt"
 						}
 					]
 				}
@@ -153,7 +153,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"filename\" : \"fo18MAY2020bhav.csv.gz\",\n    \"uri\" : \"https://www.devconnect2nse.com/extranet-api/common/file/download/1.0?segment=FO&folderPath=/bhavcopy&filename=fo18MAY2020bhav.csv.gz\" ,\n    \"localPath\": \"./download/\"\n}",
+					"raw": "{\n    \"filename\" : \"cm_index_token_mstr.txt\",\n    \"uri\" : \"https://www.devconnect2nse.com/extranet-api/common/file/download/1.0?segment=FO&folderPath=/&filename=cm_index_token_mstr.txt\" ,\n    \"localPath\": \"/home/piyushwath/Work/workspace/nodejs/downloader/download/\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -184,7 +184,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"uuid\" : \"f869df55-31ef-4ca5-a580-add7fc7b21bb\"\n}",
+					"raw": "{\n    \"uuid\" : \"ea41435a-2c73-424c-9947-b7b8ebdb13d4\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
