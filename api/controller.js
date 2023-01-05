@@ -3,7 +3,9 @@ const downloader = require('../service/downloader')
 const async = require('async')
 const { v4 : uuidv4 } = require('uuid') 
 let DownloadStatusArray = []
-let DownloadStatusArrayObject = {}
+let DownloadStatusSuccessObject = {}
+let DownloadResultObject = {}
+
 const Enum = require('enum')
 
 const DownloadStatus = new Enum ({
@@ -15,13 +17,16 @@ var controller = {
 
     DownloadHandler: (req , res) => {
         let reqBody = req.body
+        let uuidData = uuidv4()
+        res.status(200).send({ "uuid" : uuidData })
         downloader.HttpDownload(reqBody,0).then((result) => {
-            let uuidData = uuidv4()
             DownloadStatusArray.push(uuidData)
-            DownloadStatusArrayObject[uuidData] = `${reqBody.localPath}${reqBody.filename}`
-            res.status(200).send({ "uuid" : uuidData,  "result" : result })
+            DownloadStatusSuccessObject[uuidData] = `${reqBody.localPath}${reqBody.filename}`
+            DownloadResultObject[uuidData] = `${result}`
+            // res.status(200).send({ "uuid" : uuidData,  "result" : result })
         }).catch((error) => {
-            res.status(500).send({ "error" : error })
+            DownloadResultObject[uuidData] = `${error}`
+            // res.status(500).send({ "error" : error })
         })
     }, //DownloadHandler
 
@@ -29,12 +34,22 @@ var controller = {
         let reqBody = req.body
         if(reqBody.uuid && DownloadStatusArray.includes(reqBody.uuid))
         {
-            res.status(200).send({ "downloadPath" :  `${DownloadStatusArrayObject[reqBody.uuid]}` ,"downloadStatus" : DownloadStatus.DOWNLOAD_SUCCESS.value , "result" : "file downloaded" })
-        
+            res.status(200).send(
+                {
+                    "downloadPath": `${DownloadStatusSuccessObject[reqBody.uuid]}`,
+                    "downloadStatus": DownloadStatus.DOWNLOAD_SUCCESS.value,
+                    "message": `${DownloadResultObject[reqBody.uuid]}`,
+                })
+
         }
         else
         {
-            res.status(500).send({ "downloadStatus" : DownloadStatus.DOWNLOAD_FAILURE.value ,"result" : "file not downloaded" })
+            res.status(500).send(
+                { 
+                    "downloadStatus" : DownloadStatus.DOWNLOAD_FAILURE.value ,
+                    "message" :  `${DownloadResultObject[reqBody.uuid]}`
+                    
+                })
         }
     }
 } //controller

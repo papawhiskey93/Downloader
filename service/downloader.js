@@ -14,6 +14,7 @@ var downloader = {
     
         return cipher.toString();
     },
+
     async InitializeLogin(failedLoginRequestCount) {
         return new Promise((resolve, reject) => {
             let url = config.NSELoginData.loginURL 
@@ -52,7 +53,7 @@ var downloader = {
                         setTimeout(() => {
                           ++failedLoginRequestCount
                           if(failedLoginRequestCount == config.maxLoginRetryCount){
-                            reject(`Maximum retries exceed for login`)
+                            reject(`Maximum retries exceed for NSE login`)
                           }else{
                             resolve(downloader.InitializeLogin(failedLoginRequestCount))
                           }
@@ -66,7 +67,7 @@ var downloader = {
                 setTimeout(() => {
                     ++failedLoginRequestCount
                     if(failedLoginRequestCount == config.maxLoginRetryCount){
-                      reject(`Maximum retries exceeded for login with ERROR : ${err}`)
+                      reject(`Maximum retries exceeded for NSE login with ERROR : ${err}`)
                     }else{
                       resolve(downloader.InitializeLogin(failedLoginRequestCount))
                     }
@@ -101,13 +102,13 @@ var downloader = {
                         const filePath = `${localDownloadPath}${downloadFileName}`
                         const fileSteam = fs.createWriteStream(filePath)
                         response.on('data' , (chunk) => {
+                            // fileSteam.write(chunk)
                             fileSteam.write(chunk)
                         }).on('end',() => {
                             fileSteam.end();
-                            resolve(response.statusCode)
+                            resolve(`File Downloaded with StatusCode : ${response.statusCode}`)
                         })
                     break
-                    
                     case 401:
                         downloader.InitializeLogin(0).then((result) => {
                             resolve(downloader.HttpDownload(reqBody , 0))
@@ -119,7 +120,7 @@ var downloader = {
                         setTimeout(() => {
                             ++failedDownloadRequestCount
                             if(failedDownloadRequestCount == config.maxDownloadRetryCount){
-                              reject(`Maximum retries exceeded for download with ERROR : ${err}`)
+                              reject(`Maximum retries exceeded for download `)
                             }else{
                               resolve(downloader.HttpDownload(reqBody,failedDownloadRequestCount))
                             }
